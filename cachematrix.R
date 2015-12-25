@@ -1,3 +1,10 @@
+## Build a customized matrix which provides cache
+## [in] : invertible matrix
+## [out]: a customized matrix which returns a list of 4 functions:
+## - set
+## - get
+## - setmatrix
+## - getmatrix
 
 makeCacheMatrix <- function(x = matrix()) {
 	m<-NULL
@@ -18,7 +25,9 @@ makeCacheMatrix <- function(x = matrix()) {
 		getmatrix=getmatrix)
 }
 
-
+## Calculate the inverse of a given matrix 
+## [in]: matrix to invert - we assume it is invertible, there is no checking here
+## [out]: inverted matrix
 cacheSolve <- function(x=matrix(), ...) {
 	## check if there is cached value for this matrix
     m<-x$getmatrix()
@@ -32,4 +41,5 @@ cacheSolve <- function(x=matrix(), ...) {
     x$setmatrix(m)			## cache the value 
     return(m)				## return the inverted matrix
 }
+
 
