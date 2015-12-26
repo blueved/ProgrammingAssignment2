@@ -45,12 +45,17 @@ cacheSolve <- function(x=matrix(), ...) {
 
 ## Test of the cache matrix 
 cacheMatrixTest <- function(){
+	message('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+	print('cacheMatrix unit test')
 	s <- matrix(1:4,2,2)	## test matrix, make sure it is invertible (det non null)
 	mt <- makeCacheMatrix(s)## build our customized super matrix
-	print('- first pass goes through calculation')
+	message('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+	print('1. first pass goes through calculation')
 	print(cacheSolve(mt))   ## calculate the inverse
-	print("- second pass should retrieve the cached value")
+	message('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+	print("2. second pass should retrieve the cached value")
 	i<-cacheSolve(mt)		## re-calculate the inverse (using the cached value this time)
-	print("- product of both matrices should return identity matrix")
+	message('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+	print("3. product of both matrices should return identity matrix")
 	i %*% s					## matrix product of source and inverted matrices
 }
